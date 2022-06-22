@@ -7,7 +7,10 @@ document.getElementById('map').addEventListener('load', async function(){
     addOnClickToMarkers('map');
 });
 
-
+const COLORS = {
+    YELLOW: '#fd0',
+    FOCUS: '#f00',
+}
 
 function addOnClickToMarkers(objectId) {
     const markers = document.querySelectorAll("g#markers > path")
@@ -15,8 +18,10 @@ function addOnClickToMarkers(objectId) {
         const name = marker.getAttribute('data-name');
         onClick = () => {
             // fill country with new color
-            console.log(name)
+            const country = document.querySelector(`g#countries > *[data-name="${name}"]`);
+            country.style.fill = COLORS.FOCUS;
         }
+        marker.onClick = onClick;
         marker.onclick = onClick;
     })
 }
