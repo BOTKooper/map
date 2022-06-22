@@ -4,8 +4,6 @@ document.getElementById('map').addEventListener('load', async function(){
         zoomEnabled: true,
         controlIconsEnabled: true
     });
-    const p = new Promise((r) => setTimeout(() => r(), 1000));
-    await p;
     addOnClickToMarkers('map');
 });
 
@@ -17,8 +15,9 @@ function addOnClickToMarkers(objectId) {
         const name = marker.getAttribute('data-name');
         onClick = () => {
             // fill country with new color
+            console.log(name)
         }
-        marker.onClick = onClick;
+        marker.onclick = onClick;
     })
 }
 
